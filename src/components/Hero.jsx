@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 function Hero({ content }) {
-  const [photo, setPhoto] = useState(localStorage.getItem('portfolio_photo') || '');
+  const [photo, setPhoto] = useState(localStorage.getItem('portfolio_photo') || '/fotoporto.jpg');
   const fileInputRef = useRef(null);
 
   const handlePhotoChange = (e) => {
