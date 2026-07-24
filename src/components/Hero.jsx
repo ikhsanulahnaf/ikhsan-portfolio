@@ -1,26 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Hero({ content }) {
-  const [photo, setPhoto] = useState(localStorage.getItem('portfolio_photo') || '/fotoporto.jpg');
-  const fileInputRef = useRef(null);
-
-  const handlePhotoChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (uploadEvent) => {
-        const base64Image = uploadEvent.target.result;
-        setPhoto(base64Image);
-        try {
-          localStorage.setItem('portfolio_photo', base64Image);
-        } catch (err) {
-          console.warn("Storage quota full, image saved locally in state but could not be cached in LocalStorage.", err);
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   // Typing animation hooks
   const typingTexts = content.typingTexts || ["Eager to learn, ready to code"];
   const [currentTextIdx, setCurrentTextIdx] = useState(0);
@@ -78,36 +58,9 @@ function Hero({ content }) {
             <div className="watermark-text">{content.firstName || "IKHSAN"}</div>
             
             <div className="avatar-container-wrapper">
-              <div className="avatar-wrapper" onClick={() => fileInputRef.current.click()} style={{ cursor: 'pointer' }}>
-                {photo ? (
-                  <img src={photo} alt={content.name} className="avatar-image" />
-                ) : (
-                  <div className="avatar-placeholder">
-                    <svg stroke="currentColor" fill="none" strokeWidth="1.5" viewBox="0 0 24 24" height="3.5rem" width="3.5rem" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                    </svg>
-                    <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', lineHeight: '1.4' }}>
-                      Klik untuk upload foto Anda
-                    </p>
-                  </div>
-                )}
-                
-                <div className="avatar-upload-overlay">
-                  <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" height="1.1em" width="1.1em" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
-                  </svg>
-                  Ganti Foto
-                </div>
+              <div className="avatar-wrapper">
+                <img src={content.photo || "/fotoporto.jpg"} alt={content.name} className="avatar-image" />
               </div>
-              
-              <input 
-                type="file" 
-                ref={fileInputRef} 
-                style={{ display: 'none' }} 
-                accept="image/*" 
-                onChange={handlePhotoChange} 
-              />
             </div>
 
             {/* Floating 3D Cubes */}

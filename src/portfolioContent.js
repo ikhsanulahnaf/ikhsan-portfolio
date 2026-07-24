@@ -6,7 +6,8 @@ const portfolioContent = {
     firstName: "IKHSAN",
     title: "Software Engineer & System Analyst",
     description: "A Software Engineer & System Analyst dedicated to crafting seamless digital experiences that bridge the gap between user needs and business growth.",
-    resumeLink: "https://drive.google.com/file/d/11GsJR8Tqmkp5tmCer6QN53qF1UpOjdI-/view?usp=sharing",
+    resumeLink: "https://drive.google.com/file/d/1ZQM21AVQnSRiwW5qGNjRkFgtk25eo0fn/view?usp=sharing",
+    photo: "/fotoporto.jpg",
     typingTexts: [
       "Driven by curiosity, powered by code.",
       "Analyze. Code. Optimize.",
