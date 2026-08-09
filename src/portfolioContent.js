@@ -7,7 +7,7 @@ const portfolioContent = {
     title: "Software Engineer & System Analyst",
     description: "A Software Engineer & System Analyst dedicated to crafting seamless digital experiences that bridge the gap between user needs and business growth.",
     resumeLink: "https://drive.google.com/file/d/1zUP7Ikc6OzM8hXZImrtEDryR0--3das0/view?usp=sharing",
-    photo: "/fotoporto2.jpeg",
+    photo: "/fotoporto3.png",
     typingTexts: [
       "Driven by curiosity, powered by code.",
       "Analyze. Code. Optimize.",

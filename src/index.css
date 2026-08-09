@@ -397,6 +397,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  filter: drop-shadow(0 15px 30px rgba(168, 85, 247, 0.25));
 }
 
 .avatar-wrapper {
@@ -405,12 +406,9 @@ button {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  overflow: hidden;
   border-radius: 20px;
   position: relative;
-  background: radial-gradient(circle at center, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
-  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  /* Background removed so transparent PNGs float naturally */
 }
 
 @media (max-width: 480px) {
@@ -424,11 +422,15 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: bottom;
+  border-radius: 20px;
   transition: transform 0.4s ease;
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
 }
 
 .avatar-wrapper:hover .avatar-image {
-  transform: scale(1.03);
+  transform: scale(1.03) translateY(-5px);
 }
 
 /* Floating cubes/badges */
